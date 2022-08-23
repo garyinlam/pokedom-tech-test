@@ -49,4 +49,7 @@ const filterByType = (pokeArr, type) => {
 }
 
 //search button searches using both fields
-search.addEventListener("click",() => showPokemon(filterByType(filterByName(pokemonArray,searchInput.value),dropdown.value)));
+search.addEventListener("click",(e) => {
+  e.preventDefault();
+  showPokemon(filterByType(filterByName(pokemonArray,searchInput.value),dropdown.value))
+});
