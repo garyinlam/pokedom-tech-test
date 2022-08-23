@@ -3,6 +3,7 @@ import {pokemonArray} from './data/pokemon.js';
 const cardContainer = document.querySelector(".card-container");
 const searchInput = document.getElementById("search-box");
 const dropdown = document.getElementById("types");
+const search = document.querySelector(".search");
 
 const showPokemon = (pokeArray) => {
   //clear card-container
@@ -38,9 +39,6 @@ const filterByName = (pokeArr, name) => {
   return pokeArr.filter((pokemon) => pokemon.name.includes(name));
 }
 
-//when anything is typed filter and show pokemon
-searchInput.addEventListener("input",() => showPokemon(filterByName(pokemonArray,searchInput.value)));
-
 //filter pokemon by type
 const filterByType = (pokeArr, type) => {
   if(type != "") {
@@ -50,4 +48,5 @@ const filterByType = (pokeArr, type) => {
   }
 }
 
-dropdown.addEventListener("change", () => showPokemon(filterByType(pokemonArray,dropdown.value)));
+//search button searches using both fields
+search.addEventListener("click",() => showPokemon(filterByType(filterByName(pokemonArray,searchInput.value),dropdown.value)));
