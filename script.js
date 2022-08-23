@@ -40,3 +40,14 @@ const filterByName = (pokeArr, name) => {
 
 //when anything is typed filter and show pokemon
 searchInput.addEventListener("input",() => showPokemon(filterByName(pokemonArray,searchInput.value)));
+
+//filter pokemon by type
+const filterByType = (pokeArr, type) => {
+  if(type != "") {
+    return pokeArr.filter((pokemon) => pokemon.types.includes(type));
+  } else {
+    return pokeArr;
+  }
+}
+
+dropdown.addEventListener("change", () => showPokemon(filterByType(pokemonArray,dropdown.value)));
